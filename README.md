@@ -93,33 +93,27 @@ Desktop-приложение на **Qt Widgets (C++)** для обнаружен
 
 ## Структура проекта
 
+```
 CFARDetector/
-│
 ├── main.cpp
-│
 ├── mainwindow.ui
-│
 ├── resources.qrc
-│
 ├── CFARDetector.pro
-│
 ├── README.md
-│
 ├── .gitignore
-│
 ├── src/
 │   ├── mainwindow.h
 │   ├── mainwindow.cpp
-│   ├── сfardetector.h
-│   └── сfardetector.cpp
-│
+│   ├── cfardetector.h
+│   └── cfardetector.cpp
 ├── styles/
 │   ├── light.qss
 │   ├── dark.qss
 │   └── creamy.qss
-│
 └── Tests/
-   └── (test .bin )
+    └── test.bin
+```
+
 
 ---
 
