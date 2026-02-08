@@ -121,7 +121,10 @@ set PATH=C:\Qt\QT\5.7\mingw53_32\bin;C:\Qt\QT\Tools\mingw530_32\bin;%PATH%
 
 Команда скопирует все Qt DLL и плагины рядом с .exe:
 ```bat
-C:\Qt\QT\5.7\mingw53_32\bin\windeployqt.exe .\CFARDetector.exe
+C:\Qt\QT\5.7\mingw53_32\bin\windeployqt.exe --release CFARDetector.exe
+copy "C:\Qt\QT\5.7\mingw53_32\bin\libgcc_s_dw2-1.dll" .
+copy "C:\Qt\QT\5.7\mingw53_32\bin\libstdc++-6.dll" .
+copy "C:\Qt\QT\5.7\mingw53_32\bin\libwinpthread-1.dll" .
 .\CFARDetector.exe
 ```
 >Если появится ошибка про libstdc++-6.dll, libgcc_s_dw2-1.dll, libwinpthread-1.dll — добавь в PATH папку MinGW (...\Tools\mingw...\bin) или скопируй эти DLL рядом с .exe.
