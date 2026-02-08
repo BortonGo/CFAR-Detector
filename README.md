@@ -8,8 +8,6 @@ Desktop-приложение на **Qt Widgets (C++)** для обнаружен
 
 ## Скриншоты
 
-> Вставь сюда изображения (GitHub будет показывать их прямо на странице).
-
 **Light theme**
 <img width="1147" height="529" alt="image" src="https://github.com/user-attachments/assets/ca1f2a49-518a-4d59-907e-52051a86ad5e" />
 
