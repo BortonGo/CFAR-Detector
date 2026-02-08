@@ -23,6 +23,7 @@ ui_*.h
 *.jsc
 *.rcc
 
+CFARDetector.pro.user
 CMakeCache.txt
 CMakeFiles/
 cmake-build-*/
