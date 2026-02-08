@@ -76,18 +76,78 @@ Desktop-приложение на **Qt Widgets (C++)** для обнаружен
 
 ## Сборка и запуск
 
-### Вариант 1: Qt Creator (qmake)
-1. Открыть `CFARDetector.pro`
-2. Собрать и запустить
+Проект поддерживает **CMake** и **qmake**.
 
-> **CMake-сборка будет добавлена позже**.
+---
+
+## Вариант 1: CMake (рекомендуется)
+
+### Требования
+
+- Qt 5.x (MinGW 32-bit), например Qt 5.7.0 MinGW 32-bit  
+- CMake ≥ 3.10  
+- MinGW той же версии, что используется Qt Kit  
+
+---
+
+### Сборка (Windows / MinGW)
+
+```bat
+git clone https://github.com/BortonGo/CFAR-Detector.git
+cd CFAR-Detector
+mkdir build
+cd build
+cmake -G "MinGW Makefiles" ..
+cmake --build .
+```
+
+---
+
+### Запуск (Windows)
+
+Qt-приложение требует, чтобы рядом с .exe или в PATH находились Qt DLL.
+
+---
+
+### Способ A — запуск через PATH (для разработки)
+
+Подставь свой путь к Qt:
+```bat
+set PATH=C:\Qt\QT\5.7\mingw53_32\bin;C:\Qt\QT\Tools\mingw530_32\bin;%PATH%
+.\CFARDetector.exe
+```
+
+---
+
+### Способ B — сделать портативную папку (для проверки)
+
+Команда скопирует все Qt DLL и плагины рядом с .exe:
+```bat
+C:\Qt\QT\5.7\mingw53_32\bin\windeployqt.exe .\CFARDetector.exe
+.\CFARDetector.exe
+```
+>Если появится ошибка про libstdc++-6.dll, libgcc_s_dw2-1.dll, libwinpthread-1.dll — добавь в PATH папку MinGW (...\Tools\mingw...\bin) или скопируй эти DLL рядом с .exe.
+
+---
+
+## Вариант 2: Qt Creator (CMake)
+
+1. Открыть CMakeLists.txt
+2. Выбрать Kit: Desktop Qt 5.x.x MinGW 32-bit
+3. Configure → Build → Run
+
+---
+
+## Вариант 3: Qt Creator (qmake)
+
+1. Открыть CFARDetector.pro
+2. Собрать и запустить
 
 ---
 
 ## Тестовые данные
 
 В папке `Tests/` хранятся бинарные файлы для проверки работы алгоритма.  
-
 
 ---
 
@@ -113,15 +173,6 @@ CFARDetector/
 └── Tests/
     └── test.bin
 ```
-
-
----
-
-## Планы / улучшения
-
-- [ ] Добавить сборку через **CMake**  
-- [ ] Дополнить README инструкциями CMake-сборки
-- [ ] Добавить больше тестовых сценариев и файлов
 
 ---
 
