@@ -17,23 +17,19 @@ bool CfarDetector::validateParams(const Params& params) noexcept
         return false;
     }
 
-    // окна должны быть нечётные (симметрия относительно CUT)
     auto odd = [](int v) { return (v & 1) != 0; };
     if (!odd(params.Xb) || !odd(params.Yb) || !odd(params.Xs) || !odd(params.Ys)) {
         return false;
     }
 
-    // большое окно должно быть строго больше малого
     if (!(params.Xb > params.Xs && params.Yb > params.Ys)) {
         return false;
     }
 
-    // окна должны помещаться в матрицу
     if (!(params.Xb < params.X && params.Yb < params.Y)) {
         return false;
     }
 
-    // количество фоновых ячеек > 0
     const int sq = params.Xb * params.Yb - params.Xs * params.Ys;
     if (sq <= 0) {
         return false;
@@ -67,7 +63,6 @@ static void boxSumSeparableNoEdges(const float* data, int X, int Y, int Xw, int 
         const float* row = data + static_cast<std::size_t>(y) * static_cast<std::size_t>(X);
         float* trow = tmp.data() + static_cast<std::size_t>(y) * static_cast<std::size_t>(X);
 
-        // стартовая сумма для центра x = xMin: окно [xMin-rx .. xMin+rx] == [0 .. 2*rx]
         float accumulator = 0.0f;
         for (int xx = 0; xx <= 2 * radiusX; ++xx) {
             accumulator += row[xx];
@@ -82,7 +77,6 @@ static void boxSumSeparableNoEdges(const float* data, int X, int Y, int Xw, int 
     }
 
     // Вертикальный проход: out[y][x] = сумма по Yw вокруг y
-    // берём только x, для которых горизонтальные суммы корректны
     for (int x = xMin; x <= xMax; ++x) {
 
         float accumulator = 0.0f;
@@ -144,7 +138,6 @@ std::vector<Detection> CfarDetector::run(const std::vector<float>& data, const P
             const float V = data[i];
             const double background = static_cast<double>(sumB[i] - sumS[i]);
 
-            // (Sb - Ss) * Th < V
             if (background * Th < static_cast<double>(V)) {
                 out.push_back(Detection{ x, y, V });
             }
