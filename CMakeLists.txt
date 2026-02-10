@@ -3,6 +3,7 @@ project(CFARDetector LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
@@ -36,12 +37,10 @@ target_include_directories(CFARDetector PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# Удобно для запуска из IDE: рабочая папка = корень проекта (видно Tests/)
 set_target_properties(CFARDetector PROPERTIES
     VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
 )
 
-# (опционально) прячем консоль на Windows. Убери, если хочешь видеть stdout.
 if (WIN32)
     set_target_properties(CFARDetector PROPERTIES WIN32_EXECUTABLE ON)
 endif()

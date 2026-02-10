@@ -26,9 +26,7 @@ public:
     std::vector<Detection> run(const std::vector<float>& data, const Params& params) const;
 
 private:
-    static inline std::size_t idx(int x, int y, int X) noexcept {
-        return static_cast<std::size_t>(y) * static_cast<std::size_t>(X) + static_cast<std::size_t>(x);
-    }
 
     static bool validateParams(const Params& params) noexcept;
+
 };
