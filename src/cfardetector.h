@@ -26,7 +26,5 @@ public:
     std::vector<Detection> run(const std::vector<float>& data, const Params& params) const;
 
 private:
-
     static bool validateParams(const Params& params) noexcept;
-
 };

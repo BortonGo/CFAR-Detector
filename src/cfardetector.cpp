@@ -120,7 +120,9 @@ std::vector<Detection> CfarDetector::run(const std::vector<float>& data, const P
     const int y0 = radiusYb;
     const int y1 = Y - radiusYb - 1;
 
-    if (x0 > x1 || y0 > y1) return out;
+    if (x0 > x1 || y0 > y1) {
+        return out;
+    }
 
     // Предварительно считаем карты сумм для большого и малого окна:
     std::vector<float> sumB, sumS, tmp;
